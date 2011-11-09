@@ -31,7 +31,7 @@ Reseting your Collection's localStorage:
 
     someCollection.localStorage.reset();
 
-All data from collections ID ("SomeCollection") will be removed from localStorage. You can bind reset with Collections's reset event.
+All data from collections ID ("SomeCollection") will be removed from localStorage. You can't bind reset with Collections's reset event, because fetch use reset and will not work.
 
 Feel free to use Backbone as you usually would, this is a drop-in replacement.
 

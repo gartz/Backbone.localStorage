@@ -83,8 +83,8 @@ function(_, Backbone) {
 	    return model;
 	  },
 	  
-	  // Reset the collection from localStorage.
-	  reset: function() {
+	  // Clear the collection from localStorage.
+	  clear: function() {
 	  	var models = this.findAll();
 	  	for (var i = 0, l = models.length; i < l; i++) {
 	  		this.remove(models[i]);
