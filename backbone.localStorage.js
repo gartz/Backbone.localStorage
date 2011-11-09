@@ -132,5 +132,5 @@ function(_, Backbone) {
 	  }
 	};
 
-	return Store;
+	return root.Store;
 });
