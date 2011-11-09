@@ -74,13 +74,22 @@ function(_, Backbone) {
 	  },
 	
 	  // Delete a model from `this.data`, returning it.
-	  destroy: function(model) {
+	  remove: function(model) {
 	    localStorage.removeItem(this.name+"-"+model.id);
 	    this.records = _.reject(this.records, 
 	    	function(record_id){return record_id == model.id.toString();}
 	    );
 	    this.save();
 	    return model;
+	  },
+	  
+	  // Reset the collection from localStorage.
+	  reset: function() {
+	  	var models = this.findAll();
+	  	for (var i = 0, l = models.length; i < l; i++) {
+	  		this.remove(models[i]);
+	  	}
+	  	localStorage.removeItem(this.name);
 	  }
 	
 	});
@@ -113,7 +122,7 @@ function(_, Backbone) {
 	    case "read":    resp = model.id ? store.find(model) : store.findAll(); break;
 	    case "create":  resp = store.create(model);                            break;
 	    case "update":  resp = store.update(model);                            break;
-	    case "delete":  resp = store.destroy(model);                           break;
+	    case "delete":  resp = store.remove(model);                            break;
 	  }
 	
 	  if (resp) {
